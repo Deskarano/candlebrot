@@ -101,13 +101,13 @@ static void fractal_to_bitmap(fractal_t *fractal,
 
 int main()
 {
-    fractal_t *fractal = new_fractal(5000, 5000, -2.5, -1.5, .5, 1.5);
-    bitmap_t *bitmap = new_bitmap(5000, 5000);
-    render_t *render = new_render(mandelbrot_2, 65536, 1);
+    fractal_t *fractal = new_fractal(10000, 10000, -2.5, -1.5, .5, 1.5);
+    bitmap_t *bitmap = new_bitmap(10000, 10000);
+    render_t *render = new_render(mandelbrot_2, 65536, 4);
 
     render_fractal_perimeter(fractal, render);
     fractal_to_bitmap(fractal, bitmap);
-    save_png_to_file(bitmap, "/home/grg/outline.png");
+    save_png_to_file(bitmap, "outline.png");
 
     free_fractal(fractal);
     free_bitmap(bitmap);

@@ -222,7 +222,7 @@ static void render_fractal_perimeter_controller(fractal_t *fractal,
                 //ignore duplicates
                 while(get_pixel_traversed(fractal, point->x, point->y) && point_stack->size > 0)
                 {
-                    printf("\tDumping point %p (%i, %i)\n", point, point->y, point->x);
+                    //printf("\tDumping point %p (%i, %i)\n", point, point->y, point->x);
                     free(point);
                     point = stack_pop(point_stack);
                 }
@@ -252,9 +252,9 @@ static void render_fractal_perimeter_controller(fractal_t *fractal,
                         data->max_y = point->y;
                     }
 
-                    printf("\tPushing point %p (%i, %i) to thread %i\n", point, point->y, point->x, i);
-                    printf("\t\t%zu points in stack\n", point_stack->size);
-                    printf("\t\t%i points assigned\n", data->calls);
+                    //printf("\tPushing point %p (%i, %i) to thread %i\n", point, point->y, point->x, i);
+                    //printf("\t\t%zu points in stack\n", point_stack->size);
+                    //printf("\t\t%i points assigned\n", data->calls);
 
                     args[i].working = 1;
                     args[i].point = point;
@@ -278,7 +278,7 @@ static void render_fractal_perimeter_controller(fractal_t *fractal,
                 while(args[i].output_stack->size > 0)
                 {
                     stack_element_t *point = stack_pop(args[i].output_stack);
-                    printf("\tRetrieved point %p (%i, %i) from thread %i\n", point, point->y, point->x, i);
+                    //printf("\tRetrieved point %p (%i, %i) from thread %i\n", point, point->y, point->x, i);
                     stack_push(point_stack, point);
                 }
             }
